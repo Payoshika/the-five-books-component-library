@@ -2,6 +2,7 @@ import { useState, useRef, useEffect, useId } from "react";
 import { twMerge } from "tailwind-merge";
 import { ChevronDown, Check } from "lucide-react";
 import { type Option } from "../types/utils.types";
+import ErrorMessage from "./ErrorMessage";
 
 interface SelectProps {
   options: Option[];
@@ -144,16 +145,11 @@ const Select = ({
           })}
         </ul>
       )}
-
-      {error?.message && (
-        <p
-          id={errorId}
-          role="alert"
-          className="text-ui-danger text-xs mt-1 px-1 font-medium"
-        >
-          {error.message}
-        </p>
-      )}
+      <ErrorMessage
+        message={error?.message}
+        id={errorId}
+        className="mt-2 px-2" // component-specific spacing
+      />
     </div>
   );
 };

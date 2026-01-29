@@ -1,5 +1,6 @@
 import { type Option } from "../types/utils.types";
 import { type ComponentProps } from "react";
+import ErrorMessage from "./ErrorMessage";
 
 export interface CheckBoxOption extends Option {
   checked: boolean;
@@ -8,7 +9,7 @@ export interface CheckBoxOption extends Option {
 export interface CheckBoxProps
   extends Omit<ComponentProps<"input">, "onClick"> {
   options: CheckBoxOption[];
-  error: { message?: string };
+  error?: { message?: string };
   onValueChange: (value: string) => void;
   className?: string;
 }
@@ -61,16 +62,11 @@ const CheckBox = ({
           </label>
         );
       })}
-      {error?.message && (
-        <p
-          id={errorId}
-          role="alert"
-          className="text-ui-danger text-xs mt-2 px-2"
-        >
-          {" "}
-          {error.message}
-        </p>
-      )}
+      <ErrorMessage
+        message={error?.message}
+        id={errorId}
+        className="mt-2" // component-specific spacing
+      />
     </fieldset>
   );
 };

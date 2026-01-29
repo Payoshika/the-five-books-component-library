@@ -2,7 +2,7 @@ import { useState, useRef, useEffect, useId } from "react";
 import CheckBox, { type CheckBoxProps } from "./CheckBox";
 import { ChevronDown } from "lucide-react";
 import { twMerge } from "tailwind-merge";
-
+import ErrorMessage from "./ErrorMessage";
 const ExpandedCheckBox = ({
   options,
   onValueChange,
@@ -83,18 +83,17 @@ const ExpandedCheckBox = ({
       {isCheckboxOpen && (
         <CheckBox
           options={options}
-          error={error}
           onValueChange={onValueChange}
           ref={ref}
           {...props}
           className="absolute z-50 w-full p-1 border border-ui-border bg-ui-bg rounded-md mt-0.5"
         />
       )}
-      {!isCheckboxOpen && error?.message && (
-        <p id={errorId} className="text-ui-danger text-xs">
-          {error.message}
-        </p>
-      )}
+      <ErrorMessage
+        message={error?.message}
+        id={errorId}
+        className="mt-2 px-2" // component-specific spacing
+      />
     </div>
   );
 };
