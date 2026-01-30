@@ -1,7 +1,7 @@
 @import "tailwindcss";
 
 @theme {
-    /* --- 1. Base Palette (具体的な色) --- */
+    /* --- 1. Base Palette  --- */
     --color-ink-heavy: #1c1a17;
     --color-ink-soft: #71665b;
     --color-paper-light: #f5f3f0;
@@ -10,14 +10,13 @@
     --color-ocean-dark: #385461;
     --color-ocean-light: #7da3b5;
 
-    /* --- 2. Semantic Mapping (ライトモード用の割り当て) --- */
+    /* --- 2. Semantic Mapping --- */
     --color-ui-bg: var(--color-paper-light);
     --color-ui-primary: var(--color-ink-heavy);
     --color-ui-secondary: var(--color-ink-soft);
     --color-ui-border: #d6cdc2;
     --color-ui-accent: var(--color-ocean-dark);
 
-    /* 追加したい色があればここで定義 */
     --color-ui-danger: #b91c1c;
     --color-ui-success: #15803d;
 
@@ -27,14 +26,14 @@
 
 @layer base {
     .dark {
-        /* --- 3. Dark Mode Overrides (ダークモードでの再定義) --- */
+        /* --- 3. Dark Mode Overrides  --- */
         --color-ui-bg: var(--color-paper-dark);
         --color-ui-primary: #e8e6e3;
         --color-ui-secondary: #a4998e;
         --color-ui-border: #39332d;
         --color-ui-accent: var(--color-ocean-light);
 
-        /* ダークモード用の危険色（少し明るくして視認性を確保） */
+        /*  */
         --color-ui-danger: #f87171;
         --color-ui-success: #4ade80;
     }
