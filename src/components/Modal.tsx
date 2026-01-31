@@ -72,7 +72,7 @@ const Modal = ({
             : "motion-scale-out-95 motion-opacity-out-0 motion-duration-200",
         )}
       >
-        <div className="flex-1 overflow-y-auto p-6">{children}</div>
+        <div className="flex-1 overflow-y-auto p-4">{children}</div>
 
         {(showCancel || onAction) && (
           <div className="flex gap-3 p-4 border-t border-ui-border bg-ui-secondary/5">
