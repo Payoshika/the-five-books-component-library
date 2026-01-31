@@ -75,7 +75,7 @@ const Modal = ({
         <div className="flex-1 overflow-y-auto p-6">{children}</div>
 
         {(showCancel || onAction) && (
-          <div className="flex gap-3 p-6 border-t border-ui-border bg-ui-secondary/5">
+          <div className="flex gap-3 p-4 border-t border-ui-border bg-ui-secondary/5">
             {showCancel && (
               <Button className="flex-1" variant="outline" onClick={onClose}>
                 Cancel
