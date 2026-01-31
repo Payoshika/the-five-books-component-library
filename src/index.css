@@ -1,4 +1,5 @@
 @import "tailwindcss";
+@plugin "tailwindcss-motion";
 
 @theme {
     /* --- 1. Base Palette  --- */

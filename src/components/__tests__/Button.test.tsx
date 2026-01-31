@@ -125,8 +125,8 @@ describe("Button", () => {
 
     it("hides children content visually when loading", () => {
       renderWithI18n(<Button isLoading>Submit</Button>);
-      const childrenContainer = screen.getByText("Submit").parentElement;
-      expect(childrenContainer).toHaveClass("invisible");
+      const childrenSpan = screen.getByText("Submit").closest("span");
+      expect(childrenSpan).toHaveClass("invisible");
     });
 
     it("disables button when loading", () => {

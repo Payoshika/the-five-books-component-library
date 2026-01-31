@@ -139,7 +139,8 @@ describe("Select", () => {
       );
 
       fireEvent.click(screen.getByRole("button"));
-      fireEvent.click(screen.getByText("Banana"));
+      // Use getByRole to find the option in the dropdown, avoiding duplicate text issue
+      fireEvent.click(screen.getByRole("option", { name: /banana/i }));
 
       // Still called - component doesn't prevent re-selection
       expect(handleChange).toHaveBeenCalledWith("banana");
@@ -212,14 +213,16 @@ describe("Select", () => {
   // 5. Error State
   // ============================================
   describe("Error State", () => {
-    it("applies error styles when error=true", () => {
-      render(<Select options={fruitOptions} error />);
+    it("applies error styles when error has message", () => {
+      render(
+        <Select options={fruitOptions} error={{ message: "Required field" }} />,
+      );
       const button = screen.getByRole("button");
       expect(button).toHaveClass("border-ui-danger");
     });
 
-    it("does not apply error styles when error=false", () => {
-      render(<Select options={fruitOptions} error={false} />);
+    it("does not apply error styles when error has no message", () => {
+      render(<Select options={fruitOptions} error={{}} />);
       const button = screen.getByRole("button");
       expect(button).not.toHaveClass("border-ui-danger");
     });

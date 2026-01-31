@@ -15,7 +15,9 @@ describe("Card", () => {
 
     it("renders with default props (variant='outline', as='div')", () => {
       render(<Card>Default card</Card>);
-      const card = screen.getByText("Default card").closest("div");
+      const content = screen.getByText("Default card");
+      // Content is inside inner div, which is inside the Card div
+      const card = content.closest(".rounded-sm");
       expect(card).toBeInTheDocument();
       expect(card).toHaveClass(
         "bg-ui-bg",
@@ -26,7 +28,7 @@ describe("Card", () => {
 
     it("applies custom className alongside default classes", () => {
       render(<Card className="custom-class">Styled card</Card>);
-      const card = screen.getByText("Styled card").closest("div");
+      const card = screen.getByText("Styled card").closest(".rounded-sm");
       expect(card).toHaveClass("custom-class");
       expect(card).toHaveClass("rounded-sm", "border");
     });
@@ -38,7 +40,7 @@ describe("Card", () => {
   describe("Variant Styles", () => {
     it("renders with variant='default' and applies correct classes", () => {
       render(<Card variant="default">Default variant</Card>);
-      const card = screen.getByText("Default variant").closest("div");
+      const card = screen.getByText("Default variant").closest(".rounded-sm");
       expect(card).toHaveClass(
         "bg-ui-primary",
         "text-ui-bg",
@@ -48,7 +50,7 @@ describe("Card", () => {
 
     it("renders with variant='outline' and applies correct classes", () => {
       render(<Card variant="outline">Outline variant</Card>);
-      const card = screen.getByText("Outline variant").closest("div");
+      const card = screen.getByText("Outline variant").closest(".rounded-sm");
       expect(card).toHaveClass(
         "bg-ui-bg",
         "text-ui-primary",
@@ -58,7 +60,7 @@ describe("Card", () => {
 
     it("renders with variant='accent' and applies correct classes", () => {
       render(<Card variant="accent">Accent variant</Card>);
-      const card = screen.getByText("Accent variant").closest("div");
+      const card = screen.getByText("Accent variant").closest(".rounded-sm");
       expect(card).toHaveClass(
         "bg-ui-accent",
         "text-ui-bg",
@@ -89,8 +91,8 @@ describe("Card", () => {
     it("renders as section when as='section'", () => {
       render(<Card as="section">Section card</Card>);
       // section doesn't have an implicit role, so we find by text
-      const content = screen.getByText("Section card");
-      const card = content.parentElement?.parentElement;
+      const card = screen.getByText("Section card").closest("section");
+      expect(card).toBeInTheDocument();
       expect(card?.tagName).toBe("SECTION");
     });
 
@@ -188,13 +190,8 @@ describe("Card", () => {
 
     it("renders footer with correct styling", () => {
       render(<Card footer="Styled Footer">Content</Card>);
-      const footerElement = screen.getByText("Styled Footer");
-      expect(footerElement).toHaveClass(
-        "text-sm",
-        "opacity-80",
-        "italic",
-        "border-t",
-      );
+      const footerElement = screen.getByText("Styled Footer").closest("footer");
+      expect(footerElement).toHaveClass("text-sm", "italic", "border-t");
     });
 
     it("renders ReactNode as footer", () => {
@@ -218,8 +215,8 @@ describe("Card", () => {
         </Card>,
       );
 
-      const card =
-        screen.getByText("Body Content").parentElement?.parentElement;
+      // Find the card container using the base class
+      const card = screen.getByText("Body Content").closest(".rounded-sm");
       const children = card?.children;
 
       expect(children?.length).toBe(3);

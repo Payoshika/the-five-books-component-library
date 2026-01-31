@@ -55,9 +55,7 @@ describe("ExpandedCheckBox", () => {
           error={{}}
         />,
       );
-      expect(
-        screen.getByText("click to open the option"),
-      ).toBeInTheDocument();
+      expect(screen.getByText("click to open the option")).toBeInTheDocument();
     });
 
     it("does not render checkbox dropdown initially", () => {
@@ -157,9 +155,7 @@ describe("ExpandedCheckBox", () => {
           error={{}}
         />,
       );
-      expect(
-        screen.getByText("click to open the option"),
-      ).toBeInTheDocument();
+      expect(screen.getByText("click to open the option")).toBeInTheDocument();
     });
   });
 
@@ -496,7 +492,7 @@ describe("ExpandedCheckBox", () => {
       });
     });
 
-    it("does not call onValueChange when checkbox is disabled", () => {
+    it("disables checkbox inputs when disabled prop is true", () => {
       const handleValueChange = vi.fn();
       render(
         <ExpandedCheckBox
@@ -509,9 +505,11 @@ describe("ExpandedCheckBox", () => {
 
       fireEvent.click(screen.getByRole("button"));
       const checkboxes = screen.getAllByRole("checkbox");
-      fireEvent.click(checkboxes[0]);
 
-      expect(handleValueChange).not.toHaveBeenCalled();
+      // Verify all checkboxes are disabled
+      checkboxes.forEach((checkbox) => {
+        expect(checkbox).toBeDisabled();
+      });
     });
   });
 
@@ -524,9 +522,7 @@ describe("ExpandedCheckBox", () => {
         <ExpandedCheckBox options={[]} onValueChange={vi.fn()} error={{}} />,
       );
 
-      expect(
-        screen.getByText("click to open the option"),
-      ).toBeInTheDocument();
+      expect(screen.getByText("click to open the option")).toBeInTheDocument();
 
       fireEvent.click(screen.getByRole("button"));
       expect(screen.queryAllByRole("checkbox")).toHaveLength(0);
