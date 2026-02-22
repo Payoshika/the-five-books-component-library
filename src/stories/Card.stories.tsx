@@ -29,79 +29,12 @@ export default meta;
 
 type Story = StoryObj<typeof Card>;
 
-// ============================================
-// Basic Stories (Visual Documentation)
-// ============================================
-
 export const Default: Story = {
   args: {
     variant: "default",
-    children: "This is a default card with dark background.",
+    children: "This is a default card.",
   },
 };
-
-export const Outline: Story = {
-  args: {
-    variant: "outline",
-    children: "This is an outline card with paper-like background.",
-  },
-};
-
-export const Accent: Story = {
-  args: {
-    variant: "accent",
-    children: "This is an accent card for highlighting content.",
-  },
-};
-
-// ============================================
-// With Title and Footer
-// ============================================
-
-export const WithTitle: Story = {
-  args: {
-    variant: "outline",
-    title: "Card Title",
-    children: "Card body content with a title header.",
-  },
-};
-
-export const WithTitleAndFooter: Story = {
-  args: {
-    variant: "outline",
-    title: "Card Title",
-    footer: "Card Footer - additional info",
-    children: "Card body content with both title and footer.",
-  },
-};
-
-// ============================================
-// Semantic Elements (as prop)
-// ============================================
-
-export const AsArticle: Story = {
-  args: {
-    as: "article",
-    variant: "outline",
-    title: "Blog Post Title",
-    children:
-      "This card renders as an <article> element with max-w-prose for optimal reading width. Perfect for blog posts or self-contained content.",
-    footer: "Posted on 2024-01-01",
-  },
-};
-
-export const AsSection: Story = {
-  args: {
-    as: "section",
-    variant: "outline",
-    title: "Dashboard Section",
-    children: "This card renders as a <section> element for thematic grouping.",
-  },
-};
-
-// ============================================
-// All Variants (Visual Comparison)
-// ============================================
 
 export const AllVariants: Story = {
   render: () => (
@@ -119,24 +52,11 @@ export const AllVariants: Story = {
   ),
 };
 
-// ============================================
-// With Rich Content
-// ============================================
-
-export const WithRichContent: Story = {
+export const WithTitleAndFooter: Story = {
   args: {
     variant: "outline",
-    title: "Rich Content Card",
-    footer: "Last updated: Today",
-    children: (
-      <div className="space-y-2">
-        <p>This card contains rich content with multiple elements.</p>
-        <ul className="list-disc list-inside">
-          <li>Feature one</li>
-          <li>Feature two</li>
-          <li>Feature three</li>
-        </ul>
-      </div>
-    ),
+    title: "Card Title",
+    footer: "Card Footer — additional info",
+    children: "Card body content with both title and footer.",
   },
 };

@@ -20,6 +20,7 @@ const CheckBox = ({
   error,
   ref,
   className,
+  disabled,
   ...props
 }: CheckBoxProps) => {
   const errorId = `error-${options[0]?.value || "checkbox"}`;
@@ -44,7 +45,10 @@ const CheckBox = ({
               value={option.value}
               checked={option.checked}
               name={option.value}
-              onChange={() => onValueChange(option.value)}
+              disabled={disabled}
+              onChange={() => {
+                if (!disabled) onValueChange(option.value);
+              }}
               className="accent-ui-accent h-4 w-4 mt-1 shrink-0 cursor-pointer focus-visible:outline focus-visible:outline-offset-2 focus-visible:outline-ui-accent"
               aria-invalid={!!error?.message}
               aria-describedby={error?.message ? errorId : undefined}

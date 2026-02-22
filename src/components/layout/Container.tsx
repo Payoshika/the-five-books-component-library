@@ -1,7 +1,8 @@
 //mobile responsive and large screen adaptable container
+import { type ComponentProps } from "react";
 import { twMerge } from "tailwind-merge";
 
-interface ContainerProps {
+interface ContainerProps extends ComponentProps<"div"> {
   children: React.ReactNode;
   size?: "default" | "narrow" | "full";
   className: string;
@@ -11,6 +12,7 @@ export const Container = ({
   children,
   size = "default",
   className,
+  ...props
 }: ContainerProps) => {
   const maxProps = {
     default: "max-w-10xl",
@@ -25,6 +27,7 @@ export const Container = ({
         maxProps[size],
         className,
       )}
+      {...props}
     >
       {children}
     </div>

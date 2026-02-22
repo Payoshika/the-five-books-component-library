@@ -72,8 +72,6 @@ const Radio = ({
           })}
         </div>
       </fieldset>
-
-      {/* エラーメッセージ */}
       {error?.message && <ErrorMessage message={error.message} />}
     </div>
   );
