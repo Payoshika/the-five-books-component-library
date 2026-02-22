@@ -2,7 +2,7 @@ import { type Meta, type StoryObj } from "@storybook/react-vite";
 import { expect, within, userEvent, fn } from "storybook/test";
 import Modal from "../components/Modal";
 import { type ComponentProps, useState } from "react";
-import Button from "../components/Button";
+import { Button } from "../components/Button";
 
 type StoryProps = ComponentProps<typeof Modal>;
 

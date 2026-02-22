@@ -1,7 +1,7 @@
 import { useEffect, useId, useState, type ReactNode } from "react";
 import { createPortal } from "react-dom";
 import { twMerge } from "tailwind-merge";
-import Button from "./Button";
+import { Button } from "./Button";
 import { useKeyPress } from "../hooks/useKeyPress";
 
 export interface ModalProps {

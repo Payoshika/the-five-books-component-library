@@ -1,6 +1,6 @@
 import { type Meta, type StoryObj } from "@storybook/react-vite";
 import { expect, within, userEvent, fn } from "storybook/test";
-import Button from "../components/Button";
+import { Button } from "../components/Button";
 import { type ComponentProps } from "react";
 
 type StoryProps = ComponentProps<typeof Button> & {

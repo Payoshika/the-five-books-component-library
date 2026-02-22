@@ -8,7 +8,7 @@ export interface ButtonProps extends ComponentProps<"button"> {
   isLoading?: boolean;
   ariaLabel?: string;
 }
-const Button = ({
+export const Button = ({
   size = "md",
   variant = "default",
   isLoading = false,
@@ -83,5 +83,3 @@ const Button = ({
     </button>
   );
 };
-
-export default Button;

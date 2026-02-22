@@ -1,6 +1,6 @@
 import { useState, useMemo, useId, type ComponentProps } from "react";
 import { twMerge } from "tailwind-merge";
-import Button from "./Button";
+import { Button } from "./Button";
 import ErrorMessage from "./ErrorMessage";
 
 export interface TextAreaProps extends ComponentProps<"textarea"> {

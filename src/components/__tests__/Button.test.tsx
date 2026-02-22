@@ -3,7 +3,7 @@ import { render, screen, fireEvent } from "@testing-library/react";
 import "@testing-library/jest-dom/vitest";
 import { I18nextProvider } from "react-i18next";
 import i18n from "../../i18n";
-import Button from "../Button";
+import { Button } from "../Button";
 
 // Helper to render with i18n provider
 const renderWithI18n = (ui: React.ReactElement, locale = "en") => {
