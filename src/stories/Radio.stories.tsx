@@ -241,7 +241,8 @@ const InteractiveWithValidationExample = () => {
       </button>
       {submitted && !error.message && selectedValue && (
         <p className="text-sm text-green-600">
-          You selected: {subscriptionOptions.find((o) => o.value === selectedValue)?.label}
+          You selected:{" "}
+          {subscriptionOptions.find((o) => o.value === selectedValue)?.label}
         </p>
       )}
     </div>
@@ -257,9 +258,17 @@ export const InteractiveWithValidation: Story = {
 // ============================================
 
 export const ClickInteraction: Story = {
-  args: {
-    options: defaultOptions,
-    name: "click-test",
+  render: () => {
+    const [value, setValue] = useState<string>("");
+    return (
+      <Radio
+        options={defaultOptions}
+        name="click-test"
+        value={value}
+        onChange={(e) => setValue(e.target.value)}
+        error={{}}
+      />
+    );
   },
   play: async ({ canvasElement }) => {
     const canvas = within(canvasElement);
@@ -273,9 +282,17 @@ export const ClickInteraction: Story = {
 };
 
 export const OnlyOneSelected: Story = {
-  args: {
-    options: defaultOptions,
-    name: "single-selection-test",
+  render: () => {
+    const [value, setValue] = useState<string>("");
+    return (
+      <Radio
+        options={defaultOptions}
+        name="single-selection-test"
+        value={value}
+        onChange={(e) => setValue(e.target.value)}
+        error={{}}
+      />
+    );
   },
   play: async ({ canvasElement }) => {
     const canvas = within(canvasElement);
@@ -338,9 +355,17 @@ export const NoErrorWhenMessageEmpty: Story = {
 };
 
 export const KeyboardNavigation: Story = {
-  args: {
-    options: defaultOptions,
-    name: "keyboard-test",
+  render: () => {
+    const [value, setValue] = useState<string>("");
+    return (
+      <Radio
+        options={defaultOptions}
+        name="keyboard-test"
+        value={value}
+        onChange={(e) => setValue(e.target.value)}
+        error={{}}
+      />
+    );
   },
   play: async ({ canvasElement }) => {
     const canvas = within(canvasElement);
